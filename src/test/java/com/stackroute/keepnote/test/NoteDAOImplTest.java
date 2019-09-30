@@ -34,7 +34,7 @@ public class NoteDAOImplTest {
 	@Before
 	public void setUp() {
 		noteDAO = new NoteDAOImpl(sessionFactory);
-		note = new Note(1, "Testing-1", "Unit test for DAO", "active", LocalDateTime.now());
+		note = new Note(1, "Testing-1", "Unit test for DAO", "active", LocalDateTime.now().withNano(0));
 	}
 
 	@After
@@ -100,7 +100,6 @@ public class NoteDAOImplTest {
 		assertEquals("Unit testing for DAO layer", updatedNote.getNoteContent());
 		assertEquals(true, status);
 		noteDAO.deleteNote(updatedNote.getNoteId());
-
 	}
 
 	@Test
